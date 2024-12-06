@@ -45,7 +45,7 @@ const ErrorPage = () => {
               }}
               className="bg-[#8AC732] text-white font-sans max-w-[146px] w-full h-[48px] rounded-[100px] font-medium text-sm"
             >
-              Back to Home
+              Back to Dashboard
             </button>
           </div>
         </div>
