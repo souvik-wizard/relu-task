@@ -1,5 +1,5 @@
 import React from "react";
-import { FaEllipsisV } from "react-icons/fa";
+import { BsThreeDotsVertical } from "react-icons/bs";
 import HorizontalCarousel from "./HorizontalCarousel";
 
 const cardData = [
@@ -42,7 +42,7 @@ function SocialCard() {
                 </div>
               </div>
               <button className="p-2 rounded-full hover:bg-gray-100 transition">
-                <FaEllipsisV className="h-5 w-5 " />
+                <BsThreeDotsVertical className="h-6 w-6 " />
               </button>
             </div>
 
@@ -62,7 +62,7 @@ function SocialCard() {
                 <img
                   src="/assets/icons/white-heart.svg"
                   alt="love"
-                  className="absolute top-8 right-8 w-6 h-6 cursor-pointer"
+                  className="absolute top-4 right-4 md:top-8 md:right-8 w-6 h-6 cursor-pointer"
                 />
               </div>
             </div>

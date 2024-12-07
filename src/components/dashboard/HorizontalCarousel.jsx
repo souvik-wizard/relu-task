@@ -74,8 +74,8 @@ export default function HorizontalCarousel() {
       >
         {products.map((product) => (
           <div key={product.id} className="flex-shrink-0 w-1/2 lg:w-1/3 p-2">
-            <div className=" rounded-lg overflow-hidden">
-              <div className="relative aspect-[4/3] overflow-hidden">
+            <div className="  overflow-hidden">
+              <div className="rounded-[10px] relative aspect-[4/3] overflow-hidden">
                 <img
                   src={product.imageUrl}
                   alt={product.title}
