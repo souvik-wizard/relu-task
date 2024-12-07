@@ -36,7 +36,7 @@ const RightSideBar = () => {
           Become a Seller
         </button>
       </div>
-      <div className="flex gap-4 py-4 mx-auto xl:m-0">
+      <div className="flex gap-4  px-2 py-4 mx-auto xl:m-0">
         <p className="cursor-pointer">Artists</p>
         <p className="text-[#8D8D8D] cursor-pointer">Photographers</p>
       </div>
