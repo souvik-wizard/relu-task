@@ -86,7 +86,7 @@ export default function HorizontalCarousel() {
                 <h3 className="font-medium text-base md:text-lg leading-tight">
                   {product.title}
                 </h3>
-                <div className="flex items-center justify-between gap-1">
+                <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-1">
                   <p className="text-2xl font-bold">${product.price}</p>
                   <div className="flex items-center">
                     {[...Array(5)].map((_, i) => (

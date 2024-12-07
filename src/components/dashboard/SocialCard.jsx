@@ -26,10 +26,10 @@ function SocialCard() {
     <div className="space-y-8 overflow-auto overflow-x-hidden thin-scrollbar rounded-[10px]">
       {cardData.map((card, index) => (
         <div key={index} className="w-full mx-auto rounded-[10px] bg-white">
-          <div className="p-12 space-y-4">
+          <div className="p-4 lg:p-12 space-y-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="h-12 w-12 rounded-[10px] overflow-hidden ">
+                <div className="h-12 w-12 rounded-[10px] ">
                   <img
                     src={card.profilePicture}
                     alt={`@${card.username}`}
@@ -53,7 +53,7 @@ function SocialCard() {
                   Read More
                 </span>
               </p>
-              <div className="relative aspect-[4/3] w-full rounded-lg overflow-hidden mt-2">
+              <div className="relative w-full rounded-lg  mt-2">
                 <img
                   src={card.postImage}
                   alt="Post content"

@@ -30,17 +30,17 @@ const rightSidebarData = [
 
 const RightSideBar = () => {
   return (
-    <div className="px-1 w-full md:w-auto flex flex-col h-screen ">
+    <div className="px-1 w-full md:w-auto flex flex-col h-screen overflow-auto overflow-x-hidden thin-scrollbar">
       <div className="flex items-center w-full p-2 md:p-4 pt-0">
-        <button className=" w-full  bg-[#88C2BB] text-white px-4 py-3 hover:bg-[#81b8b2] rounded-[10px] lg:px-20 lg:py-8 lg:text-base text-sm md:whitespace-pre">
+        <button className=" w-full  bg-[#88C2BB] text-white px-4 py-3 hover:bg-[#81b8b2] rounded-[10px] lg:px-20 lg:py-8 lg:text-lg text-sm md:whitespace-pre">
           Become a Seller
         </button>
       </div>
-      <div className="flex gap-4 py-4">
+      <div className="flex gap-4 py-4 px-2 mx-auto xl:m-0">
         <p className="cursor-pointer">Artists</p>
         <p className="text-[#8D8D8D] cursor-pointer">Photographers</p>
       </div>
-      <div className="overflow-auto overflow-x-hidden thin-scrollbar">
+      <div className="overflow-auto overflow-x-hidden thin-scrollbar mx-auto ">
         <div className="relative">
           {rightSidebarData.map((item) => (
             <div
@@ -52,7 +52,7 @@ const RightSideBar = () => {
                 alt="background"
                 className="full object-cover "
               />
-              <div className="absolute flex items-center gap-2 justify-between translate-y-12">
+              <div className="absolute flex items-center gap-2 justify-between xl:translate-y-10 md:translate-y-20 translate-y-10">
                 <img src={item.innerImage} alt={item.name} className="w-12 " />
                 <GoDotFill className="text-[#0EC297] absolute bg-white rounded-full left-9 -top-1" />
                 <div className="text-white">

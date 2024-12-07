@@ -92,14 +92,14 @@ const Sidebar = () => {
   return (
     <div
       className={`${
-        isSmallScreen ? (isExpanded ? "w-72" : "w-24") : "w-72"
-      } relative flex flex-col justify-between h-screen text-gray-800 p-2 md:p-4 pt-8 transition-all duration-300 z-50 
+        isSmallScreen ? (isExpanded ? "w-44" : "w-24") : "w-72"
+      } relative flex flex-col justify-between h-screen text-gray-800 p-2 md:p-4 transition-all duration-300 z-50 
        `}
     >
       {isSmallScreen && (
         <button
           onClick={toggleSidebar}
-          className="absolute -right-3 top-10 bg-white rounded-full p-1.5 shadow-lg z-50"
+          className="absolute -right-2 top-10 bg-white rounded-full p-1.5 shadow-lg z-50"
           aria-label={isExpanded ? "Collapse sidebar" : "Expand sidebar"}
         >
           <div className="w-4 h-4 border-2 border-gray-600 rounded-full " />
