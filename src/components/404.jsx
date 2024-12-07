@@ -7,10 +7,11 @@ const ErrorPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if user exists in Redux state or localStorage
     const storedUser = JSON.parse(localStorage.getItem("user"));
     if (!user && !storedUser) {
-      navigate("/login"); // Redirect to login if no user found
+      navigate("/login");
+    } else {
+      navigate("/dashboard");
     }
   }, [user, navigate]);
 
@@ -36,7 +37,6 @@ const ErrorPage = () => {
           <div>
             <button
               onClick={() => {
-                // Check user in Redux or localStorage and navigate accordingly
                 if (!user && !JSON.parse(localStorage.getItem("user"))) {
                   navigate("/login");
                 } else {

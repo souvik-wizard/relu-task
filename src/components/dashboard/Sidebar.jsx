@@ -5,47 +5,47 @@ import { logout } from "../../store/slices/authSlice";
 import { auth } from "../../firebase/firebase";
 
 const menuItems = [
-  { id: 1, label: "Home", icon: "assets/icons/home.svg", isActive: true },
+  { id: 1, label: "Home", icon: "/assets/icons/home.svg", isActive: true },
   {
     id: 2,
     label: "Notifications",
-    icon: "assets/icons/notification.svg",
+    icon: "/assets/icons/notification.svg",
     isActive: false,
   },
   {
     id: 3,
     label: "Shop",
-    icon: "assets/icons/heart.svg",
+    icon: "/assets/icons/heart.svg",
     isActive: false,
   },
   {
     id: 4,
     label: "Conversation",
-    icon: "assets/icons/message.svg",
+    icon: "/assets/icons/message.svg",
     isActive: false,
   },
   {
     id: 5,
     label: "Wallet",
-    icon: "assets/icons/wallet.svg",
+    icon: "/assets/icons/wallet.svg",
     isActive: false,
   },
   {
     id: 6,
     label: "Subscription",
-    icon: "assets/icons/favorite.svg",
+    icon: "/assets/icons/favorite.svg",
     isActive: false,
   },
   {
     id: 7,
     label: "My Profile",
-    icon: "assets/icons/profile.svg",
+    icon: "/assets/icons/profile.svg",
     isActive: false,
   },
   {
     id: 8,
     label: "Settings",
-    icon: "assets/icons/setting.svg",
+    icon: "/assets/icons/setting.svg",
     isActive: false,
   },
 ];
@@ -80,10 +80,10 @@ const Sidebar = () => {
 
   const handleLogout = async () => {
     try {
-      await auth.signOut(); // Firebase sign out
-      dispatch(logout()); // Dispatch logout action to update the Redux state
-      localStorage.removeItem("user"); // Remove user data from localStorage
-      navigate("/login"); // Navigate to the login page after logout
+      await auth.signOut();
+      dispatch(logout());
+      localStorage.removeItem("user");
+      navigate("/login");
     } catch (error) {
       console.error("Error during sign out:", error);
     }
@@ -107,7 +107,7 @@ const Sidebar = () => {
       )}
       <div className="h-full flex flex-col justify-between">
         <div className=" bg-white rounded-[10px] py-4 px-2 lg:p-8 ">
-          <img src="assets/logo.png" alt="Logo" className="w-20 lg:w-24" />
+          <img src="/assets/logo.png" alt="Logo" className="w-20 lg:w-24" />
         </div>
 
         <div className="mt-2 lg:mt-8 flex justify-between flex-col  bg-white rounded-[10px] h-full p-4">
@@ -142,13 +142,13 @@ const Sidebar = () => {
             ))}
           </div>
           <div
-            className={`flex  items-center text-sm gap-3.5 p-2 rounded-[10px] cursor-pointer hover:bg-[#88C2BB]/10 w-full`}
+            className={`flex  items-center text-sm gap-3.5 p-2 rounded-[10px] cursor-pointer hover:bg-[#FF5E8A]/10 w-full`}
             role="button"
             aria-label="logout"
             onClick={handleLogout}
           >
             <div className="">
-              <img src="assets/icons/logout.svg" alt="logout" className="" />
+              <img src="/assets/icons/logout.svg" alt="logout" className="" />
             </div>
             {(!isSmallScreen || isExpanded) && (
               <h2 className=" text-[#88c2bb]">Log out</h2>

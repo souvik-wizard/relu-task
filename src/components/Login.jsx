@@ -6,19 +6,26 @@ import {
   GoogleAuthProvider,
 } from "firebase/auth";
 import { auth } from "../firebase/firebase";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setUser, setError, setLoading } from "../store/slices/authSlice";
+import { FcGoogle } from "react-icons/fc";
+import { Loader2 } from "lucide-react";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setLocalError] = useState("");
+  const [localError, setLocalError] = useState("");
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const isLoading = useSelector((state) => state.auth.loading);
 
   const handleGoogleSignIn = async () => {
     const provider = new GoogleAuthProvider();
     dispatch(setLoading(true));
+    setLocalError("");
 
     try {
       const result = await signInWithPopup(auth, provider);
@@ -29,7 +36,6 @@ export default function Login() {
         displayName: user.displayName || "",
       };
 
-      // Save user data in localStorage
       localStorage.setItem("user", JSON.stringify(userData));
 
       dispatch(setUser(userData));
@@ -42,10 +48,10 @@ export default function Login() {
     }
   };
 
-  // Email/Password login handler
   const handleLogin = async (e) => {
     e.preventDefault();
     dispatch(setLoading(true));
+    setLocalError("");
 
     try {
       const userCredential = await signInWithEmailAndPassword(
@@ -59,7 +65,6 @@ export default function Login() {
         displayName: userCredential.user.displayName || "",
       };
 
-      // Save user data in localStorage
       localStorage.setItem("user", JSON.stringify(userData));
 
       dispatch(setUser(userData));
@@ -73,30 +78,37 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold">Sign in to your account</h2>
-          <p className="mt-2 text-gray-600">
-            Or{" "}
-            <Link to="/register" className="text-blue-600 hover:text-blue-500">
-              create a new account
-            </Link>
-          </p>
-        </div>
-        <form className="mt-8 space-y-6" onSubmit={handleLogin}>
-          {error && (
-            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
-              {error}
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#88C2BB] via-[#88C2BB]/80 to-[#88C2BB]/60 p-4">
+      <div className="w-full max-w-md bg-white/80  rounded-[10px] shadow-2xl border border-white/30 overflow-hidden ">
+        <div className="p-8 space-y-6">
+          <div className="text-center">
+            <h2 className="text-4xl font-extrabold text-gray-800 mb-2">
+              Welcome Back
+            </h2>
+            <p className="text-gray-600 text-sm">
+              Don't have an account?{" "}
+              <Link
+                to="/register"
+                className="text-[#FF5E8A] font-semibold hover:text-[#FF5E8A]/80 transition-colors"
+              >
+                Sign up
+              </Link>
+            </p>
+          </div>
+
+          {localError && (
+            <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded-r-lg animate-pulse">
+              {localError}
             </div>
           )}
-          <div className="space-y-4">
+
+          <form onSubmit={handleLogin} className="space-y-6">
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-gray-700"
+                className="block text-sm font-medium text-gray-700 mb-2"
               >
-                Email address
+                Email Address
               </label>
               <input
                 id="email"
@@ -104,41 +116,77 @@ export default function Login() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-4 py-3 rounded-lg bg-gray-100 border border-[#88C2BB] focus:outline-none focus:border-[#88C2BB] focus:ring-0 transition duration-300"
+                placeholder="Enter your email"
+                disabled={isLoading}
               />
             </div>
-            <div>
+
+            <div className="relative">
               <label
                 htmlFor="password"
-                className="block text-sm font-medium text-gray-700"
+                className="block text-sm font-medium text-gray-700 mb-2"
               >
                 Password
               </label>
               <input
                 id="password"
-                type="password"
+                type={isPasswordVisible ? "text" : "password"}
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-4 py-3 rounded-lg bg-gray-100 border border-[#88C2BB] focus:outline-none focus:border-[#88C2BB] focus:ring-0 transition duration-300 pr-12"
+                placeholder="Enter your password"
+                disabled={isLoading}
               />
+              <button
+                type="button"
+                onClick={() => setIsPasswordVisible(!isPasswordVisible)}
+                className="absolute right-3 top-10 text-gray-500 hover:text-[#88C2BB] transition"
+                disabled={isLoading}
+              >
+                {isPasswordVisible ? "Hide" : "Show"}
+              </button>
             </div>
-          </div>
-          <button
-            type="submit"
-            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-          >
-            Sign in
-          </button>
-        </form>
 
-        {/* Google Sign-In Button */}
-        <div className="mt-6">
+            <button
+              type="submit"
+              className="w-full bg-[#88C2BB] text-white py-3 rounded-lg hover:bg-[#88C2BB]/90 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#88C2BB] focus:ring-offset-2 flex items-center justify-center"
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Signing In...
+                </>
+              ) : (
+                "Sign In"
+              )}
+            </button>
+          </form>
+
+          <div className="flex items-center justify-center space-x-4 my-4">
+            <div className="h-px bg-gray-300 w-full"></div>
+            <span className="text-gray-500 text-sm">or</span>
+            <div className="h-px bg-gray-300 w-full"></div>
+          </div>
+
           <button
             onClick={handleGoogleSignIn}
-            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            className="w-full flex items-center justify-center space-x-2 py-3 rounded-lg border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#88C2BB] focus:ring-offset-2"
+            disabled={isLoading}
           >
-            Sign in with Google
+            {isLoading ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Signing In...
+              </>
+            ) : (
+              <>
+                <FcGoogle className="w-5 h-5" />
+                <span>Sign in with Google</span>
+              </>
+            )}
           </button>
         </div>
       </div>

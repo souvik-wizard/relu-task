@@ -8,28 +8,28 @@ const products = [
     title: "Modern Wall Decor Framed Painting",
     price: 199.99,
     rating: 5,
-    imageUrl: "assets/horizontalcarousel/img1.png",
+    imageUrl: "/assets/horizontalcarousel/img1.png",
   },
   {
     id: 2,
     title: "Modern Wall Decor Framed Painting",
     price: 199.99,
     rating: 5,
-    imageUrl: "assets/horizontalcarousel/img2.png",
+    imageUrl: "/assets/horizontalcarousel/img2.png",
   },
   {
     id: 3,
     title: "Modern Wall Decor Framed Painting",
     price: 199.99,
     rating: 5,
-    imageUrl: "assets/horizontalcarousel/img3.png",
+    imageUrl: "/assets/horizontalcarousel/img3.png",
   },
   {
     id: 4,
     title: "Modern Wall Decor Framed Painting",
     price: 199.99,
     rating: 5,
-    imageUrl: "assets/horizontalcarousel/img4.png",
+    imageUrl: "/assets/horizontalcarousel/img4.png",
   },
 ];
 
@@ -49,7 +49,7 @@ export default function HorizontalCarousel() {
     if (!isDragging) return;
     e.preventDefault();
     const x = e.pageX - carouselRef.current.offsetLeft;
-    const walk = (x - startX) * 2; // Adjust scrolling speed
+    const walk = (x - startX) * 2;
     carouselRef.current.scrollLeft = scrollLeft - walk;
   };
 

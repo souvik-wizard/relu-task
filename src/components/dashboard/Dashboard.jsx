@@ -17,6 +17,8 @@ export default function Dashboard() {
 
     if (!user && !storedUser) {
       navigate("/login");
+    } else {
+      navigate("/dashboard");
     }
   }, [user, navigate]);
 
@@ -27,7 +29,7 @@ export default function Dashboard() {
         <Feed />
         <RightSideBar />
       </div>
-      {/* Mobile View */}
+
       <div className="h-screen w-full xl:hidden flex flex-col overflow-auto pr-2">
         <div className="sticky top-0 z-10 bg-inherit p-2 md:p-4 ">
           <Search />
@@ -37,7 +39,7 @@ export default function Dashboard() {
           <button
             className={`p-2 md:p-3 ${
               selectedTab === "Posts"
-                ? "text-[#88C2BB] font-bold"
+                ? "text-[#88C2BB] font-bold underline"
                 : "text-gray-500"
             }`}
             onClick={() => setSelectedTab("Posts")}
@@ -47,7 +49,7 @@ export default function Dashboard() {
           <button
             className={`p-2 md:p-3 ${
               selectedTab === "Feed"
-                ? "text-[#85c8c0] font-bold"
+                ? "text-[#85c8c0] font-bold underline"
                 : "text-gray-500"
             }`}
             onClick={() => setSelectedTab("Feed")}

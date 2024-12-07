@@ -8,16 +8,16 @@ const cardData = [
     username: "thewallart",
     description:
       "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ",
-    profilePicture: "assets/posts/dpforp1.png",
-    postImage: "assets/posts/post1.png",
+    profilePicture: "/assets/posts/dpforp1.png",
+    postImage: "/assets/posts/post1.png",
   },
   {
     name: "Thomas J.",
     username: "thecustomcreater",
     description:
       "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ",
-    profilePicture: "assets/posts/dpforp2.png",
-    postImage: "assets/posts/post2.png",
+    profilePicture: "/assets/posts/dpforp2.png",
+    postImage: "/assets/posts/post2.png",
   },
 ];
 

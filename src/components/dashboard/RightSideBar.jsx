@@ -15,16 +15,23 @@ const rightSidebarData = [
     innerImage: "/assets/rightsidebar/bg2-inner.png",
   },
   {
-    name: "Emilie Jones",
+    name: "Erica Jones",
     username: "@thewillwithyou",
-    image: "/assets/rightsidebar/bg3.png",
-    innerImage: "/assets/rightsidebar/bg3-inner.png",
+    image: "/assets/rightsidebar/bg5.png",
+    innerImage: "/assets/rightsidebar/bg1-inner.png",
   },
+
   {
     name: "Jessica Williams",
     username: "@thewillwithyou",
     image: "/assets/rightsidebar/bg4.png",
     innerImage: "/assets/rightsidebar/bg4-inner.png",
+  },
+  {
+    name: "Emilie Jones",
+    username: "@thewillwithyou",
+    image: "/assets/rightsidebar/bg3.png",
+    innerImage: "/assets/rightsidebar/bg3-inner.png",
   },
 ];
 
