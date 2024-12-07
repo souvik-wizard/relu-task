@@ -59,7 +59,7 @@ const RightSideBar = () => {
                 alt="background"
                 className="full object-cover "
               />
-              <div className="absolute flex items-center gap-2 justify-between xl:translate-y-10 md:translate-y-20 translate-y-10">
+              <div className="absolute flex items-center gap-2 justify-between xl:translate-y-10 md:translate-y-20">
                 <img src={item.innerImage} alt={item.name} className="w-12 " />
                 <GoDotFill className="text-[#0EC297] absolute bg-white rounded-full left-9 -top-1" />
                 <div className="text-white">
